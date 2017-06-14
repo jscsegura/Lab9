@@ -41,17 +41,14 @@ class Mes(object):
 	def __init__(self,mes):
 		self.mes = mes
 
-	def getNombre(self, n):
+	def getNombre(self, mes):
 	
 	    months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-	    a=months.index(n) + 1
-	    import calendar
-	    import datetime
-	    print(calendar.monthrange(2012,a)[1])
+	    return months[mes-1]
 
 class Reloj(object):
 
-	def __init__(self,hours,minutes,seconds): #NO DEBE DE CONFUNDIRSE MINUTOS CON M DE MAXIMUM
+	def __init__(self,hours,minutes,seconds): 
 		#super().__init__()
 		self.set(hours, minutes,seconds)
 
@@ -134,7 +131,7 @@ class Calendario(object):
 		return "{0:02d}/{1:02d}/{2:4d}".format(self.mes,self.dia,self. año)
 
 
-class Fecha(Reloj, Calendario):
+class Fecha(Reloj, Calendario,Mes):
 
 
 
@@ -156,7 +153,8 @@ class Fecha(Reloj, Calendario):
 			self.avanzarDia()
 
 	def __str__(self):
-		return "{} de {} del {}".format(self.dia,self.mes,self.año)
+		name=Mes.getNombre(self, self.mes)
+		return "{} de {} del {} a las {}:{}:{}".format(self.dia,name,self.año, self.hours,self.minutes, self.seconds)
 
 
 
@@ -182,10 +180,11 @@ class Fecha(Reloj, Calendario):
 # import datetime
 # print(calendar.monthrange(2012,4)[1])
 
-x=Fecha(28,2,2012,23,59,59)
-
-
-x.avanzar()
+i=0
+x=Fecha(17,11,2016,19,00,00)
+while i!=1000000:
+	x.avanzar()
+	i+=1
 print(x)
 
 # x.tic()
