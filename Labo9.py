@@ -36,6 +36,29 @@
 
 class Mes(object):
 
+	"""
+    Does nothing more than demonstrate syntax.
+
+    This is an example of how a Pythonic human-readable docstring can
+    get parsed by doxypypy and marked up with Doxygen commands as a
+    regular input filter to Doxygen.
+
+    Args:
+        arg1:   A positional argument.
+        arg2:   Another positional argument.
+
+    Kwargs:
+        kwarg:  A keyword argument.
+
+    Returns:
+        A string holding the result.
+
+    Raises:
+        ZeroDivisionError, AssertionError, & ValueError.
+
+
+    """
+
 	out= int(0)
 	nombre = ""
 	def __init__(self,mes):
@@ -154,40 +177,43 @@ class Fecha(Reloj, Calendario,Mes):
 
 	def __str__(self):
 		name=Mes.getNombre(self, self.mes)
-		return "{} de {} del {} a las {}:{}:{}".format(self.dia,name,self.año, self.hours,self.minutes, self.seconds)
+		return "{} de {} del {} a las ".format(self.dia,name,self.año) + Reloj.__str__(self)
 
 
 
 
 
 
-# instancia = Contador(30,50)
-# print(instancia.c)
-# instancia.setCuenta(600)
-# instancia.setRebase(402)
 
-# inst = Mes(40,50,'Nov')
-# inst.getNombre('Nov')
+
+#inst = Mes(3)
+#print(inst.getNombre(3))
 # x=Reloj(23,59,59)
 # print(x)
 # x.tic()
 # print(x)
+
+# x1=Reloj(15,23,34)
+# print(x1)
+# x1.tic()
+# print(x1)
+
 # inst2=Calendario(28,2,2012)
 # inst2.avanzarDia()
 # print(inst2)
+# inst3=Calendario(11,4,1996)
+# inst3.avanzarDia()
+# print(inst3)
 
-# import calendar-
-# import datetime
-# print(calendar.monthrange(2012,4)[1])
 
 i=0
-x=Fecha(17,11,2016,19,00,00)
+x=Fecha(17,11,2016,19,0,0)
+print(x)
 while i!=1000000:
 	x.avanzar()
 	i+=1
 print(x)
 
-# x.tic()
 
 
 
